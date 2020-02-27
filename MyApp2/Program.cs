@@ -30,8 +30,8 @@ namespace MyApp2
       }
       else
       {
-        Console.WriteLine("eat more tacos")
-      }
+        Console.WriteLine("eat more tacos");
+      };
 
       Console.WriteLine($"{greeting} I'd like {numberTacos} tacos and meat={hasMeat}");
     }
