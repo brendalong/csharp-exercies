@@ -37,6 +37,18 @@ namespace ListIntro {
       }
 
       Console.WriteLine("Hello World!");
+
+      Dictionary<string, string> student = new Dictionary<string, string>();
+      student.Add("name", "Adam");
+      student.Add("Cohort", "Day 37");
+
+      Dictionary<string, string> anotherStudent = new Dictionary<string, string>() { { "name", "Brenda" }, { "Cohort", "Day 37" },
+      };
+
+      foreach (keyValuePair<string, string> item in student) {
+        Console.WriteLine($"the student {item.Key} is {item.Value}");
+      }
+
     }
   }
 }
