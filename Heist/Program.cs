@@ -23,6 +23,9 @@ namespace Heist
       Console.ResetColor();
 
       int bankDifficulty = int.Parse(Console.ReadLine()); //default
+      int newBankDifficulty = 0;
+
+      Console.Clear();
 
       bool addAnother = true;
       Console.ForegroundColor = ConsoleColor.Blue;
@@ -44,21 +47,23 @@ namespace Heist
           Console.WriteLine($"Rank {userName}'s talents: (1 - 5)");
           string userSkill = Console.ReadLine();
           TeamMember.Add("skillLevel", userSkill);
-          // int userSkill = int.Parse(Console.ReadLine());
           Console.WriteLine($"What is {userName}'s courage level?(0.0 - 2.0)");
           string userCourage = Console.ReadLine();
           TeamMember.Add("courageFactor", userCourage);
-          // int userCourage = int.Parse(Console.ReadLine());
           ListOfTeamMembers.Add(TeamMember);
-
+          Console.Clear();
           // Console.WriteLine($"You have been accepted {ListOfTeamMembers[0]["userName"]}");
           Console.ForegroundColor = ConsoleColor.Green;
           Console.WriteLine($"{userName} is now a member of your team. Good LUCK.");
+          Console.ResetColor();
+          Console.ForegroundColor = ConsoleColor.Blue;
+          Console.WriteLine("------Build Your Team------");
           Console.ResetColor();
         }
       }
 
       //Display the team member's information.
+      Console.Clear();
       int i = 1;
       foreach (var member in ListOfTeamMembers)
       {
@@ -72,16 +77,20 @@ namespace Heist
         i++;
       }
 
-      Console.WriteLine($"-----------------------");
+      Console.ForegroundColor = ConsoleColor.Blue;
+      Console.WriteLine($"------You have {ListOfTeamMembers.Count} team members ------");
+      Console.ResetColor();
+      Console.WriteLine(" ");
       Console.ForegroundColor = ConsoleColor.Magenta;
       Console.WriteLine("So, how many times would you like to attempt a robbery?");
       Console.ResetColor();
       int howManyAttempts = int.Parse(Console.ReadLine());
 
+      Console.Clear();
+
 
       int teamSkill = 0; //default value
       int attemptCount = 0;
-
       int failedAttemp = 0;
 
       foreach (var member in ListOfTeamMembers)
@@ -92,15 +101,17 @@ namespace Heist
       while (attemptCount < howManyAttempts)
       {
         Console.ResetColor();
-        Console.WriteLine($"--- Attempt Number: {attemptCount + 1}");
+        Console.WriteLine($"--- Attempt Number: {attemptCount + 1} ---");
 
-        bankDifficulty = bankDifficulty;//reset
         //Add some random difficulty to the bank
+        // newBankDifficulty = bankDifficulty;
         Random rand = new Random();
-        int addedDifficulty = rand.Next(-10, 10);
-        bankDifficulty = bankDifficulty + addedDifficulty;
+        int addedDifficulty = rand.Next(-10, 11);
+        // Console.WriteLine(addedDifficulty);
+        newBankDifficulty = bankDifficulty + addedDifficulty;
+        Console.WriteLine(newBankDifficulty);
 
-        if (teamSkill > bankDifficulty)
+        if (teamSkill > newBankDifficulty)
         {
           if (failedAttemp > 0)
           {
@@ -122,10 +133,13 @@ namespace Heist
         }
         attemptCount++;
       }
+
       Console.ResetColor();
+      Console.ForegroundColor = ConsoleColor.Blue;
       Console.WriteLine("------Summary------");
-      Console.WriteLine($"Team Skill: {teamSkill}");
-      Console.WriteLine($"Final Bank Difficulty: {bankDifficulty}");
+      Console.ResetColor();
+      Console.WriteLine($"Team Skills: {teamSkill}");
+      Console.WriteLine($"Final Bank Difficulty: {newBankDifficulty}");
 
 
     }
