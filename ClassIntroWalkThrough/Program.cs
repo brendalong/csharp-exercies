@@ -1,24 +1,30 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace Classes {
+namespace Classes
+{
 
-  public class Customer {
+  public class Customer
+  {
     // Public Properties
+    //Class properties are the interface you provide to external code to get, and modify, the values of the private fields.
     public string FirstName { get; set; }
 
     public string LastName { get; set; }
 
     public bool IsLocal { get; set; }
 
-    public string FullName {
-      get {
+    public string FullName
+    {
+      get
+      {
         return $"{FirstName} {LastName}";
       }
     }
   }
 
-  public class DeliveryService {
+  public class DeliveryService
+  {
 
     /*
       Properties
@@ -30,12 +36,14 @@ namespace Classes {
     /*
       Methods
     */
-    public void Deliver (Product product, Customer customer) {
-      Console.WriteLine ($"Product delivered by {this.TransitType} to {customer.FullName}");
+    public void Deliver(Product product, Customer customer)
+    {
+      Console.WriteLine($"Product delivered by {this.TransitType} to {customer.FullName}");
     }
   }
 
-  public class Product {
+  public class Product
+  {
     /*
       Properties
     */
@@ -50,35 +58,42 @@ namespace Classes {
     /*
       Methods
     */
-    public void Ship (Customer customer, DeliveryService service) {
-      if (!customer.IsLocal) {
-        service.Deliver (this, customer);
+    public void Ship(Customer customer, DeliveryService service)
+    {
+      if (!customer.IsLocal)
+      {
+        service.Deliver(this, customer);
       }
     }
   }
 
-  class Program {
-    static void Main (string[] args) {
-      Product tinkerToys = new Product () {
+  class Program
+  {
+    static void Main(string[] args)
+    {
+      Product tinkerToys = new Product()
+      {
         Title = "Tinker Toys",
         Description = "You can build anything you want",
         Price = 32.49,
         Quantity = 25
       };
 
-      Customer marcus = new Customer () {
+      Customer marcus = new Customer()
+      {
         FirstName = "Marcus",
         LastName = "Fulbright",
         IsLocal = false
       };
 
-      DeliveryService UPS = new DeliveryService () {
+      DeliveryService UPS = new DeliveryService()
+      {
         Name = "UPS",
         TransitType = "train"
       };
 
       // Ship the tinker toys to Marcus using UPS
-      tinkerToys.Ship (marcus, UPS);
+      tinkerToys.Ship(marcus, UPS);
     }
   }
 }
