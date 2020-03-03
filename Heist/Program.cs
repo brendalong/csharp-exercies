@@ -109,7 +109,7 @@ namespace Heist
         int addedDifficulty = rand.Next(-10, 11);
         // Console.WriteLine(addedDifficulty);
         newBankDifficulty = bankDifficulty + addedDifficulty;
-        Console.WriteLine(newBankDifficulty);
+        // Console.WriteLine(newBankDifficulty);
 
         if (teamSkill > newBankDifficulty)
         {
