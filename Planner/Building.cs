@@ -11,10 +11,6 @@ namespace Planner
       _dateConstructed = DateTime.Now;
     }
 
-    // public void Construct()
-    // {
-
-    // }
 
     public void Purchase(string owner)
     {
