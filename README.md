@@ -13,4 +13,4 @@
 * Heist - Console App, Dictionary, List, Random, Loop
 * Planner - classes intro
 * AddressBook - try/catch
-* Student Exercises - classes methods and props
+* Student Exercises - classes methods and props. dbdiagram https://dbdiagram.io/d/5d7fd8c114d7fc1c039e066b
