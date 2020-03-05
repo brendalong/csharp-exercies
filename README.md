@@ -14,3 +14,6 @@
 * Planner - classes intro
 * AddressBook - try/catch
 * Student Exercises - classes methods and props. dbdiagram https://dbdiagram.io/d/5d7fd8c114d7fc1c039e066b
+* ClassesIntroFromAdam - details about classes - cars
+* LinQExamples - https://www.tutorialsteacher.com/linq/what-is-linq
+*
