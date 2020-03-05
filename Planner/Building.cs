@@ -34,6 +34,7 @@ namespace Planner
     public double depth { get; set; }
 
     // Calculated property that has no setter. It is readonly.
+    // convert double to int: int res = Convert.ToInt32(val);
     public double getVolume
     {
       get
