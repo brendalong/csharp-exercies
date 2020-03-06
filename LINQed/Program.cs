@@ -193,10 +193,58 @@ namespace LINQed
       */
 
       //first write out to determine is sqrRoot
-      int testVal = 1;
+
+      double testVal = 66;
+
       if (testVal == 0 || testVal == 1)
       {
-        Console.WriteLine($"The Test Val {testVal} has No SquareRoot");
+        Console.WriteLine($"The Test Val {testVal} one or zero so no go");
+      }
+      else
+      {
+        // Find floating point value of
+        // square root of x.
+        double sr = Math.Sqrt(testVal);
+
+        // If square root is an integer
+        if ((sr - Math.Floor(sr)) == 0)
+        {
+          Console.WriteLine($"The Test Val {testVal} yeah");
+        }
+        else
+        {
+          Console.WriteLine($"The Test Val {testVal} NOPE");
+        }
+      }
+      var notSQList = wheresSquaredo.TakeWhile(item =>
+      {
+        var sr = Math.Sqrt(item);
+        return (sr - Math.Floor(sr)) != 0;
+      });
+
+      foreach (double num in notSQList)
+      {
+        Console.WriteLine(num);
+      }
+
+      string[] fruits2 = {
+        "apple",
+        "banana",
+        "mango",
+        "orange",
+        "passionfruit",
+        "grape"
+      };
+
+      IEnumerable<string> query =
+        fruits2.TakeWhile(fruit =>
+        {
+          return String.Compare("orange", fruit, true) != 0;
+        });
+
+      foreach (string fruit in query)
+      {
+        Console.WriteLine(fruit);
       }
 
     }
