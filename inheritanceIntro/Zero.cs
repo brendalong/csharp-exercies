@@ -2,11 +2,11 @@ using System;
 
 namespace inheritanceIntro
 {
-  class Zero
+  public class Zero : Vehicle
   {
     public double BatteryKWh { get; set; }
     public string MainColor { get; set; }
-    public string MaximumOccupancy { get; set; }
+    public int MaxOccupancy { get; set; }
 
     public void ChargeBattery() { }
   }
