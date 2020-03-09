@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 
 namespace StudentExercises
@@ -55,12 +56,88 @@ namespace StudentExercises
       thirtyfive.AddInstructor(six);
       Instructor seven = new Instructor("Adam", "S");
       eleven.AddInstructor(seven);
-      // Have each instructor assign 2 exercises to each of the students.
 
+      // Have each instructor assign 2 exercises to each of the students.
       five.AssignExercise(three, donutShop);
       five.AssignExercise(four, donutShop);
       six.AssignExercise(two, kennel);
       seven.AssignExercise(one, coinPurse);
+
+      //add students to a list
+      List<Student> studentsList = new List<Student>() {
+        one,
+        two,
+        three,
+        four
+      };
+
+      List<Exercise> exercises = new List<Exercise>() {
+        kennel,
+        donutShop,
+        coinPurse,
+        monkeySee
+      };
+
+      List<Instructor> instructors = new List<Instructor>() {
+        five,
+        six,
+        seven
+      };
+
+      List<Cohort> cohorts = new List<Cohort>() {
+        thirtyfive,
+        thirtysix,
+        eleven
+      };
+
+      var jsExercises = exercises.Where(exercise =>
+      {
+        return exercise.Language == "JS";
+      });
+
+      // var c35Students = studentsList.Where(student => {
+      //   return student.Cohort == ""
+      // });
+
+      // var studentsOrderByLastName = studentsList.OrderBy(student >= {
+      //   return students.LastName
+      // });
+
+      // var studentsWithNoExercises = studentsList.Where(student =>
+      // {
+      //   int exCount = student.Exercises.Count;
+      // });
+
+      foreach (var item in studentsList)
+      {
+        Console.WriteLine($"name {item.FirstName}");
+      }
+
+      var studentWithMostExercises = studentsList.OrderByDescending(student =>
+      {
+        return student.Exercises.Count;
+      }).FirstOrDefault();
+
+      var orderByLastName = studentsList.OrderBy(student =>
+      {
+        return student.LastName;
+      });
+
+      var studentNoExercies = studentsList.Where(student =>
+      {
+        int exCount = student.Exercises.Count;
+        return exCount > 0;
+      });
+
+      //GroupBy
+      //picture a sign above each group
+
+      var groups = studentsList.GroupBy(student => student.Cohort.Name);
+
+      foreach (var group in groups)
+      {
+        Console.WriteLine($"There are {group.Count()} students in {group.Key}");
+      }
 
     }
   }
