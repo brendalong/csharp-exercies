@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 
-
 namespace StudentExercises
 {
   class Program
@@ -10,7 +9,6 @@ namespace StudentExercises
     static void Main(string[] args)
     {
       Console.WriteLine("Hello World!");
-
 
       // Create 4, or more, exercises.
       Exercise kennel = new Exercise()
@@ -59,32 +57,36 @@ namespace StudentExercises
 
       // Have each instructor assign 2 exercises to each of the students.
       five.AssignExercise(three, donutShop);
-      five.AssignExercise(four, donutShop);
+      // five.AssignExercise(four, donutShop);
       six.AssignExercise(two, kennel);
       seven.AssignExercise(one, coinPurse);
 
       //add students to a list
-      List<Student> studentsList = new List<Student>() {
+      List<Student> studentsList = new List<Student>()
+      {
         one,
         two,
         three,
         four
       };
 
-      List<Exercise> exercises = new List<Exercise>() {
+      List<Exercise> exercises = new List<Exercise>()
+      {
         kennel,
         donutShop,
         coinPurse,
         monkeySee
       };
 
-      List<Instructor> instructors = new List<Instructor>() {
+      List<Instructor> instructors = new List<Instructor>()
+      {
         five,
         six,
         seven
       };
 
-      List<Cohort> cohorts = new List<Cohort>() {
+      List<Cohort> cohorts = new List<Cohort>()
+      {
         thirtyfive,
         thirtysix,
         eleven
@@ -126,7 +128,7 @@ namespace StudentExercises
       var studentNoExercies = studentsList.Where(student =>
       {
         int exCount = student.Exercises.Count;
-        return exCount > 0;
+        return exCount < 1;
       });
 
       //GroupBy
