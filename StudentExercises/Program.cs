@@ -125,6 +125,7 @@ namespace StudentExercises
         return student.LastName;
       });
 
+      // var studentNoExercies = studentsList.Where(student => student.Exercises == 0)
       var studentNoExercies = studentsList.Where(student =>
       {
         int exCount = student.Exercises.Count;
