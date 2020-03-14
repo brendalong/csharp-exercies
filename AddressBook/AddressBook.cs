@@ -12,7 +12,7 @@ namespace Book
 
 
 
-    public void AddressBook()
+    public AddressBook()
     {
       allContacts = new Dictionary<string, Contact>();
     }
