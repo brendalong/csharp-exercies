@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace HeistPartII
 {
@@ -19,7 +20,7 @@ namespace HeistPartII
       rolodex.Add(new Muscle{Name="Jack", SkillLevel=7, PercentageCut=20});
       rolodex.Add(new Muscle{Name="Ben", SkillLevel=3, PercentageCut=10});
 
-      // Bank GreenBank = new Bank();
+      
 
       Console.WriteLine($"There are currently {rolodex.Count} robbers in the rolodex");
 
@@ -55,6 +56,55 @@ namespace HeistPartII
             }
           Console.Clear();
         }
+
+        Bank GreenBank = new Bank();
+        //mabe move to Bank
+        //put values into meaningful type - like Dictionary?
+        //use orderby to sort
+        //get first item and last item
+        Dictionary<string, int> bankValues = new Dictionary<string, int>(){
+          {"Alarm", GreenBank.AlarmScore},
+          {"Security", GreenBank.SecurityGuardScore},
+          {"Vault", GreenBank.VaultScore}
+        };
+
+        var sortedBankValues = bankValues.OrderBy(bank => bank.Value);
+
+        // foreach (KeyValuePair<string, int> prop in sortedBankValues)
+        // {
+        //   Console.WriteLine($"* {prop.Key.ToUpper()}: {prop.Value}");
+        // }
+        //   Console.WriteLine($"Least Secure: {sortedBankValues.First().Key} {sortedBankValues.First().Value}");
+        //   Console.WriteLine($"Most Secure: {sortedBankValues.Last().Key} {sortedBankValues.Last().Value}");
+          Console.Clear();
+          Console.WriteLine($"The {sortedBankValues.First().Key} is the least secure.");
+          Console.WriteLine($"The {sortedBankValues.Last().Key} is the most secure.");
+
+        int counter = 1;
+        foreach (var entry in rolodex){
+          Console.WriteLine($"{counter}. {entry.ToString()}");
+          counter++;
+        }
+
+        List<IRobber> crew = new List<IRobber>();
+
+        Console.WriteLine(@"------ Now it's time to make a crew ---------
+        Choose your team.");
+
+        
+        bool addCrewMember = true;
+        while(addCrewMember) {
+          string crewInput = Console.ReadLine();
+          if(crewInput != ""){
+            crew.Add(rolodex[int.Parse(crewInput) - 1]);
+          }else{
+            addCrewMember = false;
+          }
+        }
+        foreach (var member in crew){
+          Console.WriteLine($"{member.ToString()}");
+        }
+
       }
     }
   }

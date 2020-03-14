@@ -35,9 +35,20 @@ namespace HeistPartII
 
 
 
-  //  public Bank(){
+   public Bank(){
+    //randomly assign values for these properties:
+    // AlarmScore (between 0 and 100)
+    // VaultScore (between 0 and 100)
+    // SecurityGuardScore (between 0 and 100)
+    // CashOnHand (between 50,000 and 1 million)
+    Random random = new Random();
+    AlarmScore = random.Next(1, 100);
+    VaultScore = random.Next(0, 100);
+    SecurityGuardScore = random.Next(0, 100);
+    CashOnHand = random.Next(50000, 1000000);
 
-  //  }
+
+   }
 
   }
 }
