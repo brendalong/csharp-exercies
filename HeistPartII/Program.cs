@@ -10,7 +10,7 @@ namespace HeistPartII
     static List<IRobber> crew = new List<IRobber>();
 
     static void printCrew(){
-      Console.Clear();
+      // Console.Clear();
       Console.WriteLine("-------- Your Crew ---------");
       foreach (var member in crew){
         Console.WriteLine($"{member.ToString()}");
@@ -47,7 +47,7 @@ namespace HeistPartII
       rolodex.Add(new LockSpecialist{Name="Bell", SkillLevel=8, PercentageCut=30});
       rolodex.Add(new LockSpecialist{Name="Bonne", SkillLevel=2, PercentageCut=5});
       rolodex.Add(new Muscle{Name="Jack", SkillLevel=7, PercentageCut=20});
-      rolodex.Add(new Muscle{Name="Ben", SkillLevel=3, PercentageCut=10});
+      rolodex.Add(new Muscle{Name="Ben", SkillLevel=3, PercentageCut=80});
 
       
 
@@ -126,6 +126,7 @@ namespace HeistPartII
       bool addCrewMember = true;
       while(addCrewMember) {
         string crewInput = Console.ReadLine();
+        // bool success = int.TryParse(Console.ReadLine(), out specialtyInput);
         if(crewInput != ""){
           //check if value exists also, confirm not already added
           try {
@@ -137,17 +138,22 @@ namespace HeistPartII
                 Console.WriteLine("in the try");
                 //check if enough percentage is available to hire this robber
                 int runningPercentage = crew.Sum(member => member.PercentageCut);
-                Console.WriteLine($"running percent {runningPercentage}");
-                //if()
-                crew.Add(rolodex[int.Parse(crewInput) - 1]);
-                // Console.Clear();
 
-                printCrew();
-                printRolodex(rolodex);
+                Console.WriteLine($"running percent {runningPercentage} and new333 is {rolodex[int.Parse(crewInput)-1].PercentageCut}");
+                if(runningPercentage + rolodex[int.Parse(crewInput)-1].PercentageCut <= 100){
+                  crew.Add(rolodex[int.Parse(crewInput) - 1]);
+                  // Console.Clear();
+                  printCrew();
+                  printRolodex(rolodex);
+                }
+                else {
+                  Console.WriteLine("Not enough PercentageCut to include this memeber, choose another");
+                }
+                
               }
-              catch{
-                Console.WriteLine("invalid number, try another");
-              }
+              // catch{
+              //   Console.WriteLine("where is this oneeeee Not enough PercentageCut to include this memeber, choose another");
+              // }
             }
           }
           catch (System.ArgumentOutOfRangeException){
@@ -158,6 +164,8 @@ namespace HeistPartII
           printCrew();
         }
       } //end while addCrewMember
+
+
 
     }
  
